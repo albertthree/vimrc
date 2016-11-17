@@ -89,3 +89,7 @@ autocmd VimEnter * call StartUp()
 " close VIM if NERDTree is the only window left open
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" remember cursor position on file open
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
