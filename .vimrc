@@ -10,6 +10,12 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+
+" Add all your plugins here (note older versions of Vundle used Bundle
+" instead of Plugin)
+
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'vim-scripts/indentpython.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -17,11 +23,8 @@ Plugin 'rking/ag.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
 Plugin 'airblade/vim-gitgutter'
-
-" Add all your plugins here (note older versions of Vundle used Bundle
-" instead of Plugin)
-
-Plugin 'vim-scripts/indentpython.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 
 " all of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -47,12 +50,15 @@ au BufNewFile,BufRead *.py
     \ set autoindent |
     \ set fileformat=unix |
 
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
+" au BufNewFile,BufRead *.js, *.jsx, *.html, *.css
+"     \ set tabstop=2 |
+"     \ set softtabstop=2 |
+"     \ set shiftwidth=2 |
+"     \ set textwidth=120 |
+"     \ set expandtab |
+"     \ set smarttab |
 
-cd ~/dev/centre/
+cd ~/dev/spx/
 let mapleader = ";"
 let python_highlight_all=1
 
@@ -76,7 +82,7 @@ let g:ag_working_path_mode="r"
 let g:jedi#use_splits_not_buffers = "right"
 
 " NERDTree toggle shortcut
-map <C-n> :NERDTreeToggle ~/dev/centre/cmd<CR>
+map <C-n> :NERDTreeToggle ~/dev/spx/webui<CR>
 
 " open NERDTree on startup if no file is specified
 function! StartUp()
