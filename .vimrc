@@ -1,6 +1,8 @@
 set nocompatible              " required
 filetype off                  " required
 
+set shell=/bin/bash
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -14,6 +16,7 @@ Plugin 'gmarik/Vundle.vim'
 " Add all your plugins here (note older versions of Vundle used Bundle
 " instead of Plugin)
 
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'scrooloose/nerdtree'
@@ -58,7 +61,7 @@ au BufNewFile,BufRead *.py
 "     \ set expandtab |
 "     \ set smarttab |
 
-cd ~/dev/spx/
+cd ~/dev/jarvis/
 let mapleader = ";"
 let python_highlight_all=1
 
@@ -78,11 +81,13 @@ map! <F5> <C-O>:checktime<cr>
 " plugin configuration
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_max_files = 0
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:ag_working_path_mode="r"
 let g:jedi#use_splits_not_buffers = "right"
+let g:jsx_ext_required = 0
 
 " NERDTree toggle shortcut
-map <C-n> :NERDTreeToggle ~/dev/spx/webui<CR>
+map <C-n> :NERDTreeToggle ~/dev/jarvis<CR>
 
 " open NERDTree on startup if no file is specified
 function! StartUp()
@@ -99,3 +104,9 @@ autocmd VimEnter * call StartUp()
 if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+" turn on search highlighting
+:set hlsearch
+
+" Press Space to turn off highlighting and clear any message already displayed.
+:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
